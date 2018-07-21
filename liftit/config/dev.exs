@@ -52,7 +52,7 @@ config :phoenix, :stacktrace_depth, 20
 config :liftit, Liftit.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "p0stgr3spass",
   database: "liftit_dev",
   hostname: "localhost",
   pool_size: 10

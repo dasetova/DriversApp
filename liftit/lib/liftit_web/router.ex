@@ -14,13 +14,12 @@ defmodule LiftitWeb.Router do
   end
 
   scope "/", LiftitWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser,
 
     get "/", PageController, :index
+    resources "/owners", OwnerController do
+      resources "/vehicles", VehicleController
+    end
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", LiftitWeb do
-  #   pipe_through :api
-  # end
 end
