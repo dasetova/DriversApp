@@ -14,7 +14,7 @@ defmodule LiftitWeb.Router do
   end
 
   scope "/", LiftitWeb do
-    pipe_through :browser,
+    pipe_through :browser
 
     get "/", PageController, :index
     resources "/owners", OwnerController do
