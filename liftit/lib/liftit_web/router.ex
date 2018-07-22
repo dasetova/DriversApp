@@ -17,9 +17,8 @@ defmodule LiftitWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/owners", OwnerController do
-      resources "/vehicles", VehicleController
-    end
+    resources "/owners", OwnerController
+    resources "/vehicles", VehicleController
   end
 
 end

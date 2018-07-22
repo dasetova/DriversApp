@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav">
               <li><%= link "Index", to: page_path(@conn, :index)%> </li>
               <li><%= link "Owners", to: owner_path(@conn, :index)%> </li>
-              <li><a href="#">Vehicles</a></li>
+              <li><%= link "Vehicles", to: vehicle_path(@conn, :index)%></li>
             </ul>
           </div>
         </nav>

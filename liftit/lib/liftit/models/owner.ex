@@ -7,7 +7,7 @@ defmodule Liftit.Models.Owner do
         field :full_name, :string
         field :address, :string
         field :phone_number, :string
-        has_many :vehicles, Liftit.Models.Vehicle
+        has_many(:vehicles, Liftit.Models.Vehicle, on_delete: :delete_all)
     end
 
     def changeset(%Owner{} = owner, attrs) do

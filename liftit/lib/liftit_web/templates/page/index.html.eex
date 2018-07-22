@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h2><%= gettext "Prueba Backend %{name}!", name: "Liftit" %></h2>
+  <h2><%= gettext "Prueba Liftit Backend - %{name}!", name: "Daniel Torres" %></h2>
   <p class="lead">
     Esta aplicación fue creada como solución a la prueba práctica de liftit.
     A través de los enlaces de abajo puede acceder a la creación propietarios de vehículos

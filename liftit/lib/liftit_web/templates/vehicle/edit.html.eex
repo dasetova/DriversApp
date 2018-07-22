@@ -1,0 +1,41 @@
+<h2>Edit vehicle</h2>
+<%= form_for @changeset, vehicle_path(@conn, :update, @vehicle), fn f -> %>
+  <div class="form-group">
+    <%= label f, :plate, class: "control-label" %>
+    <%= text_input f, :plate, class: "form-control" %>
+    <%= error_tag f, :plate %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :brand, class: "control-label" %>
+    <%= text_input f, :brand, class: "form-control" %>
+    <%= error_tag f, :brand %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :model, class: "control-label" %>
+    <%= text_input f, :model, class: "form-control" %>
+    <%= error_tag f, :model %>
+  </div>
+    
+    <div class="form-group col-sm-12">
+        <%= label f, :owner, class: "control-label" %>
+        <%= select f, :owner_id,
+        Enum.map(@owners, &{&1.full_name, &1.id}),
+        class: "form-control select2",
+        id: "select_owner",
+        required: true %>
+    </div>
+    <div class="form-group col-sm-12">
+        <%= label f, :vehicle_type, class: "control-label" %>
+        <%= select f,:vehicle_type_id,
+        Enum.map(@vehicles_types, &{&1.description, &1.id}),
+        class: "form-control select2",
+        id: "select_vehicle_type",
+        required: true %>
+        
+    </div>
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
