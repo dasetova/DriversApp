@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :liftit, Liftit.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "p0stgr3spass",
   database: "liftit_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
