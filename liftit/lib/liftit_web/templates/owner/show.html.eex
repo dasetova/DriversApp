@@ -1,4 +1,27 @@
 <h2>Owner details</h2>
-<h2><%= @owner.full_name %></h2>
-<h2><%= @owner.address %></h2>
-<h2><%= @owner.phone_number %></h2>
+<div class="table-responsive">          
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td><%= @owner.id %></td>
+            </tr>
+            <tr>
+                <th>Full name</th>
+                <td><%= @owner.full_name %></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><%= @owner.address %></td>
+            </tr>
+            <tr>
+                <th>Phone number</th>
+                <td><%= @owner.phone_number %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <%= link "Back to list", to: owner_path(@conn, :index), class: "btn btn-success" %> 
+</div>
+

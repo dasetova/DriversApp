@@ -1,6 +1,7 @@
 <table class="table">
     <thead> 
       <tr>
+        <th>Id</th>
         <th>Full name</th>
         <th>Address</th>
         <th>Phone Number</th>
@@ -10,6 +11,7 @@
     <tbody>
         <%= for owner <- @owners do %>
             <tr>
+                <td> <%=owner.id%> </td>
                 <td> <%=owner.full_name%> </td>
                 <td> <%=owner.address%> </td>
                 <td> <%=owner.phone_number%> </td>
