@@ -3,12 +3,16 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td><%= @owner.id %></td>
+                <th>Identification Number</th>
+                <td><%= @owner.identificacion_number %></td>
             </tr>
             <tr>
                 <th>Full name</th>
                 <td><%= @owner.full_name %></td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td><%= @owner.age %></td>
             </tr>
             <tr>
                 <th>Address</th>
@@ -18,10 +22,13 @@
                 <th>Phone number</th>
                 <td><%= @owner.phone_number %></td>
             </tr>
+            <tr>
+                <th>Email</th>
+                <td><%= @owner.email %></td>
+            </tr>
         </tbody>
     </table>
 </div>
 <div class="row">
     <%= link "Back to list", to: owner_path(@conn, :index), class: "btn btn-success" %> 
 </div>
-

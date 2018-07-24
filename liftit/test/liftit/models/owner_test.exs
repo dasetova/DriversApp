@@ -3,7 +3,7 @@ defmodule Liftit.Models.OwnerTest do
     
     alias Liftit.Models.Owner
 
-    @valid_attrs %{full_name: "Daniel Torres", address: "Calle falsa 123", phone_number: "5874521"}
+    @valid_attrs %{identificacion_number: "123456789", full_name: "Daniel Torres", age: 27, address: "Calle falsa 123", phone_number: "5874521", email: "dasetova@gmail.com"}
     @invalid_attrs %{}
 
     test "changeset with valid attributes" do

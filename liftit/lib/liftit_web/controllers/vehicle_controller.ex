@@ -5,16 +5,13 @@ defmodule LiftitWeb.VehicleController do
     alias Ecto.Changeset
     import Ecto.Query
 
-    def index(conn, _params) do
-        query = 
-            from v in Vehicle,
-            join: o in assoc(v, :owner),
-            join: vt in assoc(v, :vehicle_type),
-            select: %{id: v.id, brand: v.brand, plate: v.plate, model: v.model, owner_name: o.full_name, type_description: vt.description}
-        vehicles = 
-            query
-            |> Repo.all()
-            |> Enum.map(fn(vehicle) -> struct(Vehicle,vehicle) end)
+    def index(conn, %{"filter" => %{"param" => param}} = params) do
+        vehicles = filter_vehicle(param)
+        render conn, "index.html", vehicles: vehicles
+    end
+
+    def index(conn, _param) do
+        vehicles = Repo.all(Vehicle) |> Repo.preload(:owner) |> Repo.preload(:vehicle_type)
         render conn, "index.html", vehicles: vehicles
     end
 
@@ -82,15 +79,24 @@ defmodule LiftitWeb.VehicleController do
         |> redirect(to: vehicle_path(conn, :index))
     end
 
-    @doc """
-    Necesario para realizar el envio de las listas de owners y vehicles_types
-    a las vistas de New y Edit
-    """
     defp send_render(conn, template, args) do
         owners = Repo.all(Owner)
         vehicles_types = Repo.all(VehicleType)
         render(conn, template, Keyword.merge([conn: conn, owners: owners, vehicles_types: vehicles_types], args))
     end
-    
 
+    defp filter_vehicle(param) do
+        query = 
+            from v in Vehicle,
+            join: o in assoc(v, :owner),
+            where: like(v.plate, ^"%#{param}%") or like(o.identificacion_number, ^"%#{param}%") or
+            like(o.full_name, ^"%#{param}%")
+        vehicles = 
+            query
+            |> Repo.all()
+            |> Repo.preload(:owner) 
+            |> Repo.preload(:vehicle_type)
+    end
+
+    
 end
