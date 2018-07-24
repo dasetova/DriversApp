@@ -1,4 +1,17 @@
 <h2>Vehicles List</h2>
+
+<%= form_for @conn, vehicle_path(@conn, :index), [as: :filter, method: "get", id: "form-id"],fn f -> %>
+
+<div class="form-group">
+    <%= label f, :param, class: "control-label" %>
+    <%= text_input f, :param, class: "form-control" %>
+</div>
+
+<div class="form-group">
+    <%= submit "Filter", class: "btn btn-primary" %>
+</div>
+<% end %>
+
 <table class="table">
     <thead> 
       <tr>

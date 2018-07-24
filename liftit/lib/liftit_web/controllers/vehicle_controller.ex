@@ -5,7 +5,13 @@ defmodule LiftitWeb.VehicleController do
     alias Ecto.Changeset
     import Ecto.Query
 
-    def index(conn, _params) do
+    def index(conn, %{"filter" => %{"param" => param}} = params) do
+        vehicles = filter_vehicle(param)
+        filter = Map.get(params, "filter", %{filter: %{param: ""}})
+        render conn, "index.html", vehicles: vehicles
+    end
+
+    def index(conn, _param) do
         vehicles = Repo.all(Vehicle) |> Repo.preload(:owner) |> Repo.preload(:vehicle_type)
         render conn, "index.html", vehicles: vehicles
     end
@@ -79,6 +85,19 @@ defmodule LiftitWeb.VehicleController do
         vehicles_types = Repo.all(VehicleType)
         render(conn, template, Keyword.merge([conn: conn, owners: owners, vehicles_types: vehicles_types], args))
     end
-    
 
+    defp filter_vehicle(param) do
+        query = 
+            from v in Vehicle,
+            join: o in assoc(v, :owner),
+            where: like(v.plate, ^"%#{param}%") or like(o.identificacion_number, ^"%#{param}%") or
+            like(o.full_name, ^"%#{param}%")
+        vehicles = 
+            query
+            |> Repo.all()
+            |> Repo.preload(:owner) 
+            |> Repo.preload(:vehicle_type)
+    end
+
+    
 end
