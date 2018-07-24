@@ -7,7 +7,6 @@ defmodule LiftitWeb.VehicleController do
 
     def index(conn, %{"filter" => %{"param" => param}} = params) do
         vehicles = filter_vehicle(param)
-        filter = Map.get(params, "filter", %{filter: %{param: ""}})
         render conn, "index.html", vehicles: vehicles
     end
 
