@@ -1,3 +1,4 @@
+<h2>Vehicles List</h2>
 <table class="table">
     <thead> 
       <tr>
@@ -5,7 +6,8 @@
         <th>Plate</th>
         <th>Brand</th>
         <th>Model</th>
-        <th>Owner</th>
+        <th>Owner name</th>
+        <th>Owner identification</th>
         <th>Type</th>
         <th></th>
       </tr>
@@ -17,8 +19,9 @@
                 <td> <%=vehicle.plate%> </td>
                 <td> <%=vehicle.brand%> </td>
                 <td> <%=vehicle.model%> </td>
-                <td> <%=vehicle.owner_name%> </td>
-                <td> <%=vehicle.type_description%> </td>
+                <td> <%=vehicle.owner.full_name%> </td>
+                <td> <%=vehicle.owner.identificacion_number%> </td>
+                <td> <%=vehicle.vehicle_type.description%> </td>
                 <td> 
                     <%= link "Show", to: vehicle_path(@conn, :show, vehicle.id), class: "btn btn-info" %> 
                     <%= link "Edit", to: vehicle_path(@conn, :edit, vehicle.id), class: "btn btn-info" %> 

@@ -1,20 +1,25 @@
+<h2>Owners list</h2>
 <table class="table">
     <thead> 
       <tr>
-        <th>Id</th>
+        <th>Identification Number</thd>
         <th>Full name</th>
+        <th>Age</th>
         <th>Address</th>
         <th>Phone Number</th>
+        <th>Email</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
         <%= for owner <- @owners do %>
             <tr>
-                <td> <%=owner.id%> </td>
+                <td> <%=owner.identificacion_number%> </td>
                 <td> <%=owner.full_name%> </td>
+                <td> <%=owner.age%> </td>
                 <td> <%=owner.address%> </td>
                 <td> <%=owner.phone_number%> </td>
+                <td> <%=owner.email%> </td>
                 <td> 
                     <%= link "Show", to: owner_path(@conn, :show, owner.id), class: "btn btn-info" %> 
                     <%= link "Edit", to: owner_path(@conn, :edit, owner.id), class: "btn btn-info" %> 
