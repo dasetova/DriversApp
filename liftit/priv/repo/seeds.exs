@@ -1,11 +1,14 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Liftit.Repo.insert!(%Liftit.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+defmodule Liftit.DatabaseSeeder do
+  alias Liftit.Repo
+  alias Liftit.Models.VehicleType
+
+  def insert_vehicles_types do
+    Repo.insert! %VehicleType{
+      description: "NHR"
+    }
+  end
+
+  def clear do
+    Repo.delete_all()
+  end
+end

@@ -1,16 +1,31 @@
-# ./Dockerfile
+FROM bitwalker/alpine-elixir-phoenix:latest
 
-# Extend from the official Elixir image
-FROM elixir:latest
-
-# Create app directory and copy the Elixir projects into it
+# Copy app
 RUN mkdir /app
-COPY . /app
 WORKDIR /app
 
-# Install hex package manager
-# By using --force, we don’t need to type “Y” to confirm the installation
-RUN mix local.hex --force
+# Set exposed ports
+EXPOSE 4000
+ENV PORT=4000 MIX_ENV=dev
 
-# Compile the project
-RUN mix do compile
+# Cache elixir deps
+ADD mix.exs mix.lock ./
+RUN mix do deps.get, deps.compile
+
+# Same with npm deps
+ADD assets/package.json assets/
+RUN cd assets && \
+    npm install
+
+ADD . .
+
+# Run frontend build, compile, and digest assets
+RUN cd assets/ && \
+    npm run deploy && \
+    cd - && \
+    mix do compile, phx.digest
+
+USER default
+
+# Commands to run when up
+CMD mix ecto.migrate; mix run priv/repo/seeds.exs; mix phx.server
