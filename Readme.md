@@ -1,8 +1,8 @@
-# Prueba practica Liftit
-El presente repositorio se creó para dar solución a la prueba práctica de desarrollador senior backend para Liftit.
+# Prueba practica Elixir
 
 ## 1. Aplicación Web
 Se crea una aplicación web con Phoenix framework (elixir), la cuál se encuentra en dentro de la carpeta /liftit de este repositorio. 
+Esta aplicación realiza gestión de conductores y sus vehículos.
 Las evidencias de las pruebas realizadas se encuentran dentro de la Wiki de este repositorio.
 
 ### Configuración de base de datos
