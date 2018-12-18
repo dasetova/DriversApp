@@ -6,7 +6,7 @@ Esta aplicación realiza gestión de conductores y sus vehículos.
 Las evidencias de las pruebas realizadas se encuentran dentro de la Wiki de este repositorio.
 
 ### Configuración de base de datos
-En la carpeta /doc/db se encuentra un respaldo de la base de datos utilizado en ambiente dev (liftit_dev).
+En la carpeta /doc/db se encuentra un respaldo de la base de datos utilizado en ambiente dev.
 
 ## 2. Conversión de listas a mapas
 El segundo punto fue realizado en el módulo TestList que se encuentra definido en la raíz de este repositorio (archivo test_list.ex). Al interior del archivo se encuentra el ejemplo de prueba.
